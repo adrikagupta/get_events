@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "240160236874",
+    "firebase_url": "https://getevents-5781a.firebaseio.com",
+    "project_id": "getevents-5781a",
+    "storage_bucket": "getevents-5781a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240160236874:android:b5ebd560f45ddffcc74db3",
+        "android_client_info": {
+          "package_name": "com.bindass.GetEvents"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "240160236874-epdigrflk9unvbipjotd6kt3m0j5f5nr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAi9LlBEElhaXj9GwP_K4c0_NVdLVyREE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "240160236874-epdigrflk9unvbipjotd6kt3m0j5f5nr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
