@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 import 'package:get_events/eventsList.dart';
 import 'package:get_events/getEvents.dart';
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 
 final eventsRef = Firestore.instance.collection('events');
 void main() {
@@ -30,22 +30,13 @@ class _HomePageState extends State<HomePage> {
     final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
     DateTime _selectedDate;
 
-    getInfo() async{
-    QuerySnapshot snapshot = await eventsRef.getDocuments();
-    List allEvents=[];
+  
+
+  getInfo() async{
+    QuerySnapshot snapshot = await eventsRef.where("eventDates", arrayContains:Timestamp.fromDate(_selectedDate)).getDocuments();
     List dateEvents=[];
     snapshot.documents.forEach((doc) {
-      allEvents.add(DateEvent.fromDocument(doc));
-     });
-     allEvents.forEach((eve) { 
-       DateTime startdateTime = eve.startDate.toDate();
-       DateTime enddateTime = eve.endDate.toDate();
-       String formattedStartDate = DateFormat('yyyy-MM-dd').format(startdateTime);
-       String formattedEndDate = DateFormat('yyyy-MM-dd').format(enddateTime);
-       String formattedSelectedDate = DateFormat('yyyy-MM-dd').format(_selectedDate);
-    
-       if((startdateTime.isBefore(_selectedDate)&& enddateTime.isAfter(_selectedDate))|| formattedStartDate==formattedSelectedDate)
-       dateEvents.add(eve);
+      dateEvents.add(DateEvent.fromDocument(doc));
      });
      if(dateEvents.isEmpty)
      {
@@ -54,6 +45,7 @@ class _HomePageState extends State<HomePage> {
      else
      Navigator.push(context, MaterialPageRoute(builder: (context)=>EventsList(dateEvents: dateEvents)));
     }
+
 
   @override
   Widget build(BuildContext context) {

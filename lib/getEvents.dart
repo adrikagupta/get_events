@@ -7,15 +7,15 @@ final events = Firestore.instance.collection('events');
 
 class DateEvent{
   final String eventName;
-  final Timestamp startDate;
-  final Timestamp endDate;
+  final List eventDates;
 
-  DateEvent({this.eventName, this.startDate,this.endDate});
+
+  DateEvent({this.eventName, this.eventDates});
 
   factory DateEvent.fromDocument(DocumentSnapshot doc){
     return DateEvent( eventName: doc['eventName'],
-    startDate: doc['eventStartDate'],
-    endDate: doc['eventEndDate'],
+    eventDates: doc['eventDates'],
+    
     );
   }
 
