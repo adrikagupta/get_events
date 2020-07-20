@@ -19,10 +19,10 @@ class EventsList extends StatelessWidget {
        color: Colors.red,
        borderRadius: BorderRadius.circular(20),
      ),
-     padding:EdgeInsets.all(10),
-     margin:EdgeInsets.fromLTRB(10,15,10,0),
-     height:120,
-     child:Column(
+      padding:EdgeInsets.all(10),
+      margin:EdgeInsets.fromLTRB(10,15,10,0),
+      height:120,
+      child:Column(
        mainAxisAlignment: MainAxisAlignment.spaceAround,
        children: <Widget>[
          Text("${dateEvents[index].eventName}",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold, color: Colors.black.withOpacity(0.8)),),

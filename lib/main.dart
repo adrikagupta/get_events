@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
+import 'package:get_events/addEvents.dart';
 import 'package:get_events/eventsList.dart';
 import 'package:get_events/getEvents.dart';
-// import 'package:intl/intl.dart';
+
 
 final eventsRef = Firestore.instance.collection('events');
 void main() {
@@ -11,7 +12,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -69,6 +69,17 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
+                Container(
+                  width: 250,
+                  height:50,
+                  child: FlatButton(
+                    onPressed: ()=>{
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> MyAppPage()))
+                    },
+                    color: Colors.white,
+                    child: Text("Add Events",style: TextStyle(fontSize: 18),)
+                  ),
+                ),
                 Container(
               color: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 25),
