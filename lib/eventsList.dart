@@ -11,12 +11,10 @@ class EventsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   
-   List<Widget> finalEvents=[];
-   
-   dateEvents.forEach((event){
-     print(event.eventDates);
-    var len = event.eventDates.length -1;
-   finalEvents.add(Container(
+
+  Widget buildEventsList(BuildContext cxt, int index){
+      var len = dateEvents[index].eventDates.length -1;
+    return Container(
      decoration: BoxDecoration(
        color: Colors.red,
        borderRadius: BorderRadius.circular(20),
@@ -27,16 +25,17 @@ class EventsList extends StatelessWidget {
      child:Column(
        mainAxisAlignment: MainAxisAlignment.spaceAround,
        children: <Widget>[
-         Text("${event.eventName}",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold, color: Colors.black.withOpacity(0.8)),),
+         Text("${dateEvents[index].eventName}",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold, color: Colors.black.withOpacity(0.8)),),
          SizedBox(height:5),
-         Text("Start DateTime: ${event.eventDates[0].toDate()}",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500, color: Colors.white)),
-         Text("End DateTime: ${event.eventDates[len].toDate()}",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500, color: Colors.white)),
+         Text("Start DateTime: ${dateEvents[index].eventDates[0].toDate()}",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500, color: Colors.white)),
+         Text("End DateTime: ${dateEvents[index].eventDates[len].toDate()}",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500, color: Colors.white)),
       
          
        ],
      ),
-   ));
-  });
+   );
+
+  }
     return SafeArea(
       child:Scaffold(
         appBar: AppBar(
@@ -44,8 +43,11 @@ class EventsList extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.red,
         ),
-        body: ListView(
-          children: finalEvents,
+        body: ListView.builder(
+          itemCount: dateEvents.length,
+          itemBuilder: (BuildContext cxt, int index){
+            return buildEventsList(cxt,index);
+          },
         )
       ),
     );
